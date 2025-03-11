@@ -2,6 +2,9 @@ package org.example.springrest.controller;
 
 import org.example.springrest.domain.User;
 import org.example.springrest.service.UserService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,14 +13,17 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService,  PasswordEncoder passwordEncoder) {
         this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @PostMapping("/user")
-    public User createUser(@RequestBody User user) {
-        return this.userService.createUser(user);
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return  ResponseEntity.status(HttpStatus.CREATED).body(userService.createUser(user));
     }
 
     @PostMapping("/user/update")
