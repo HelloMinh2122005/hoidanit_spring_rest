@@ -18,7 +18,7 @@ public class UserController {
     @GetMapping("/user")
     public String createUser() {
         User user = new User();
-        user.setName("admin 1");
+        user.setName("admin 2");
         user.setEmail("admin1@admin.com");
         return userService.createUser(user);
     }
