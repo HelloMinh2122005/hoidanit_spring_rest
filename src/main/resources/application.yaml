@@ -1,1 +1,19 @@
-spring.application.name=springrest
+server:
+  port: 8090
+
+spring:
+  application:
+    name: springrest
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/minhrest
+    username: root
+    password: minh@2005
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+      show-sql: true
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
