@@ -16,7 +16,7 @@ public class FormatRestResponse implements ResponseBodyAdvice {
     @Override
     // trả ra true => before body write
     public boolean supports(MethodParameter returnType, Class converterType) {
-        return false;
+        return true;
     }
 
     @Override
