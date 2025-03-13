@@ -32,11 +32,6 @@ public class UserController {
         return this.userService.updateUser(user);
     }
 
-    @ExceptionHandler(value = { IdInvalidException.class })
-    public ResponseEntity<String> handleIdInvalidException(IdInvalidException e) {
-        return ResponseEntity.badRequest().body(e.getMessage());
-    }
-
     // id as part of API
     @GetMapping("/{id}")
     public User findUserById(@PathVariable Long id) throws IdInvalidException {
