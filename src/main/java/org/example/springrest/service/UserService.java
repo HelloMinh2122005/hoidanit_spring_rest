@@ -38,10 +38,10 @@ public class UserService {
     }
 
     public User getUserByName(String name) {
-        return this.userRepository.findUserByName(name);
+        return this.userRepository.findUserByUsername(name);
     }
 
-    public User deleteUserById(Long id) {
-        return this.userRepository.deleteUserById(id);
+    public void deleteUserById(Long id) {
+        this.userRepository.deleteUserById(id);
     }
 }

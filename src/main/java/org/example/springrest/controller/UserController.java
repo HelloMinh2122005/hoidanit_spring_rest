@@ -26,7 +26,7 @@ public class UserController {
         return  ResponseEntity.status(HttpStatus.CREATED).body(userService.createUser(user));
     }
 
-    @PostMapping("/user/update")
+    @PutMapping("/user")
     public User updateUser(@RequestBody User user) {
         return this.userService.updateUser(user);
     }
@@ -52,5 +52,11 @@ public class UserController {
     @GetMapping("/helloUser")
     public String helloUser() {
         return "helloUser";
+    }
+
+    @DeleteMapping("/user/")
+    public String deleteUserById(@RequestParam Long id) {
+        this.userService.deleteUserById(id);
+        return "Deleted successfully";
     }
 }
