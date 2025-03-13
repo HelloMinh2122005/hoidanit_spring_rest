@@ -2,6 +2,7 @@ package org.example.springrest.controller;
 
 import org.example.springrest.domain.User;
 import org.example.springrest.service.UserService;
+import org.example.springrest.service.error.IdInvalidException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -31,9 +32,18 @@ public class UserController {
         return this.userService.updateUser(user);
     }
 
+    @ExceptionHandler(value = { IdInvalidException.class })
+    public ResponseEntity<String> handleIdInvalidException(IdInvalidException e) {
+        return ResponseEntity.badRequest().body(e.getMessage());
+    }
+
     // id as part of API
     @GetMapping("/{id}")
-    public User findUserById(@PathVariable Long id) {
+    public User findUserById(@PathVariable Long id) throws IdInvalidException {
+        if(id >= 10) {
+            throw new IdInvalidException("Id khong lon hon 10");
+        }
+
         return this.userService.getUserById(id);
     }
 
