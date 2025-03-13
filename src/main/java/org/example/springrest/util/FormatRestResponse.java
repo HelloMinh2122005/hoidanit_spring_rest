@@ -43,6 +43,8 @@ public class FormatRestResponse implements ResponseBodyAdvice {
             // case success
             restResponse.setStatus(status);
             restResponse.setMessage("CALL API SUCCEEDED");
+            if (status == 201)
+                restResponse.setMessage("Created Successfully");
             restResponse.setData(body);
         }
 
