@@ -49,7 +49,7 @@ public class UserController {
         return this.userService.getUserById(id);
     }
 
-    @GetMapping("/")
+    @GetMapping("/users")
     public List<User> findAllUsers() {
         return this.userService.getAllUsers();
     }
