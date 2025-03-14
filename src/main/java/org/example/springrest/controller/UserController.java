@@ -2,7 +2,7 @@ package org.example.springrest.controller;
 
 import org.example.springrest.domain.User;
 import org.example.springrest.service.UserService;
-import org.example.springrest.service.error.IdInvalidException;
+import org.example.springrest.util.error.IdInvalidException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;

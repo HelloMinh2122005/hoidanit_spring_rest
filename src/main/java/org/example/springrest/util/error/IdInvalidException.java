@@ -1,4 +1,4 @@
-package org.example.springrest.service.error;
+package org.example.springrest.util.error;
 
 public class IdInvalidException extends Exception {
     public IdInvalidException(String message) {

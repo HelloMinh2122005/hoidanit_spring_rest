@@ -22,6 +22,10 @@ public class UserDetailCustom implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = this.userService.getUserByName(username);
 
+        if (user == null) {
+            throw new UsernameNotFoundException("Invalid  Username");
+        }
+
         return new org.springframework.security.core.userdetails.User(
                 user.getUsername(),
                 user.getPassword(),

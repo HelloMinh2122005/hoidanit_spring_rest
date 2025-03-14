@@ -17,3 +17,8 @@ spring:
     multipart:
       max-file-size: 100MB
       max-request-size: 100MB
+
+dinhminh:
+  jwt:
+    base64-secret: rpkTERhQ3H+l+VE3TmUUuX/UeAHsJoIw/vzfCNgJrHnWD4gvz3QYsIFBo2HTQe03Iuyr68CUSAk/nkZJD5hF4Q==
+    token-validity-in-seconds: 86400
